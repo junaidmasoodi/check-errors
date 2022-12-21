@@ -39,7 +39,7 @@
     
     createHotspotLabel: function ($labelsWrapper, data) {
       if (data.link != '' && data.link != null) {
-        var html = '<a href="' + data.link + '" target="' + data.target + '">' + data.title + '</a>';
+        var html = '<a href="' + $linking + '" target="' + data.target + '">' + data.title + '</a>';
       }
       else {
         html = '<span>' + data.title + '</span>';
@@ -114,14 +114,15 @@
           link = [{
             text: Drupal.theme('imageHotspotsLinkText'),
             click: function click() {
-            window.location = data.link;
+            window.location = $linking;
           }
           }];
         }
         else {
           link = [];
         }
-        var $imageHotspotsDialog = $('<div class=title>' + title + '</div><div class=image-hotspots__dialog__inner>' + Drupal.theme('imageHotspotsDialogInner', tipTipText) + '</div> <a class=link--hotspot href=' + data.link + ' target=' + data.target + '>' + Drupal.t('Learn More') + '</a>');
+        var $linking = data.link;
+        var $imageHotspotsDialog = $('<div class=title>' + title + '</div><div class=image-hotspots__dialog__inner>' + Drupal.theme('imageHotspotsDialogInner', tipTipText) + '</div> <a class=link--hotspot href=' + $linking + ' target=' + data.target + '>' + Drupal.t('Learn More') + '</a>');
         var $imageHotspotsDialogNolink = $('<div class=title>' + title + '</div><div class=image-hotspots__dialog__inner>' + Drupal.theme('imageHotspotsDialogInner', tipTipText) + '</div>');
           $box.appendTo($imageWrapper);
           $box.click(function() {
